@@ -19,8 +19,8 @@ public class ProjectDAOImpl extends JDBCUtil implements ProjectDAO {
 	@Override
 	public void save(Project project) {
 		String sql = "INSERT INTO " +
-					"project(id, name, description, start_date, end_date, unique_id, manager_id)" + 
-					" VALUES (?,?,?,?,?,?,?)";
+					"project(name, description, start_date, end_date, unique_id, manager_id)" + 
+					" VALUES (?,?,?,?,?,?)";
 		PreparedStatement pstmt = createPreparedStatement(sql);		
 		try {			
 			pstmt.setString(1, project.getName());

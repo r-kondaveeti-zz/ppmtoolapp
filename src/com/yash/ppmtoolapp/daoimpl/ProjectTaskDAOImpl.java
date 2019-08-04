@@ -109,7 +109,12 @@ public class ProjectTaskDAOImpl extends JDBCUtil implements ProjectTaskDAO {
 	public List<ProjectTask> findAllProjectTask(int id, int developerId) {
 		
 		List<ProjectTask> projectTasks = new ArrayList<>();
-		String sql = "SELECT * FROM new_table WHERE project_id="+id+" AND developer_id="+developerId;	
+		String sql=null;
+		if (developerId==3) {
+			sql = "SELECT * FROM new_table WHERE project_id="+id+" AND developer_id="+developerId;
+		}else {
+			sql = "SELECT * FROM new_table WHERE project_id="+id;
+		}	
 		PreparedStatement pstmt = createPreparedStatement(sql);
 		
 		try {
@@ -135,5 +140,51 @@ public class ProjectTaskDAOImpl extends JDBCUtil implements ProjectTaskDAO {
 		releaseResources();
 		return projectTasks;
 	}
-
+	
+	@Override
+	public List<ProjectTask> findAllProjectTask(int developerId) {
+		
+		List<ProjectTask> projectTasks = new ArrayList<>();
+		String sql = "SELECT * FROM new_table WHERE developer_id="+developerId;
+		PreparedStatement pstmt = createPreparedStatement(sql);
+		
+		try {
+			ResultSet rs = pstmt.executeQuery();
+			ProjectTask projectTask = null;
+			while (rs.next()) {
+				projectTask = new ProjectTask();
+				projectTask.setId(rs.getInt("id"));;
+				projectTask.setSummary(rs.getString("Summary"));
+				projectTask.setAcceptanceCriteria(rs.getString("acceptance_criteria"));
+				projectTask.setDueDate(rs.getDate("due_date"));
+				projectTask.setPriority(rs.getString("priority"));
+				projectTask.setStatus(rs.getString("status"));
+				projectTask.setProjectId(rs.getInt("project_id"));
+				projectTask.setDeveloperId(rs.getInt("developer_id"));
+				
+				projectTasks.add(projectTask);							
+			}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		releaseResources();
+		return projectTasks;
+	}
+	
+//This method is present only in this file
+	public void deleteProjectTasksByProjectId(int id) {
+		String sql = "DELETE FROM new_table WHERE project_id=?;";
+		
+		PreparedStatement pstmt = createPreparedStatement(sql);	
+		try {
+			pstmt.setInt(1, id);;
+			pstmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		releaseResources();
+		
+	}
 }
+

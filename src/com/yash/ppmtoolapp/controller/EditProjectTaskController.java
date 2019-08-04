@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yash.ppmtoolapp.domain.ProjectTask;
+import com.yash.ppmtoolapp.domain.User;
 import com.yash.ppmtoolapp.service.ProjectTaskService;
 import com.yash.ppmtoolapp.serviceimpl.ProjectTaskServiceImpl;
 
@@ -26,10 +27,17 @@ public class EditProjectTaskController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("id: "+request.getParameter("id"));
 		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println(id);
 		ProjectTask projectTask = projectTaskService.getProjectTask(id);
 		projectTask.setId(id);
 		request.setAttribute("projectTask", projectTask);
+		
+		
+//		User user = (User) request.getSession().getAttribute("user");
+//		String role = user.getUserType();
+		
 		getServletContext().getRequestDispatcher("/editProjectTask.jsp").forward(request, response);
 	}
 

@@ -34,9 +34,11 @@
    
     <!-- Project Board Starts Here MIND OTHER COMPONENTS WHEN COPY AND PASTING -->
     <div class="container">
-        <a href="createProjectTask.jsp?projectId=${projectId}" class="btn btn-primary mb-3">
+    	<c:if test="${sessionScope.user.userType !=3 }">
+        <a href="./RedirectController?projectId=${projectId}" class="btn btn-primary mb-3">
             <i class="fas fa-plus-circle"> Create Project Task</i>
         </a>
+        </c:if>
         <br />
         <hr />
         <!-- Backlog STARTS HERE -->
@@ -83,15 +85,13 @@
                                 View / Update
                             </a>
 
-                           <!--  <button class="btn btn-danger ml-4">
-                                Delete
-                            </button> --> 
+                          
                             
-                          <%--   <c:if test="${user.role != 3}"> --%>
+                         	<c:if test="${sessionScope.user.userType != 3}"> 
                             <a href="#" onclick="myFunction()" class="btn btn-danger ml-4">
                                        Delete
                             </a>
-                            
+                            </c:if>
                             <script>
                             function myFunction(){	
                             	if (confirm('Are you sure you want to delete this project? ')){
@@ -100,6 +100,7 @@
                             	}        
                             }       
                             </script>
+                            
                             
                         </div>
                         
@@ -149,15 +150,15 @@
                                 View / Update
                             </a>
 
-                           <!--  <button class="btn btn-danger ml-4">
-                                Delete
-                            </button> --> 
+                          
                             
-                          <%--   <c:if test="${user.role != 3}"> --%>
+                          <c:if test="${sessionScope.user.userType != 3}"> 
                             <a href="#" onclick="myFunction()" class="btn btn-danger ml-4">
                                        Delete
                             </a>
+                            </c:if>
                             <script>
+                          
                             function myFunction(){	
                             	if (confirm('Are you sure you want to delete this project? ')){
                             		
@@ -166,7 +167,7 @@
                             }       
                             </script>
                             
-                         <%--    </c:if> --%>
+                         
                             
                         </div>
                         
@@ -218,16 +219,14 @@
                                 View / Update
                             </a>
 
-                           <!--  <button class="btn btn-danger ml-4">
-                                Delete
-                            </button> --> 
+                          
                             
-                          <%--   <c:if test="${user.role != 3}"> --%>
+                            <c:if test="${sessionScope.user.userType != 3}">
                             <a href="#" onclick="myFunction()" class="btn btn-danger ml-4">
                                        Delete
                             </a>
                             
-                            
+                            </c:if>
                             <script>
                             function myFunction(){	
                             	if (confirm('Are you sure you want to delete this project? ')){
@@ -237,7 +236,7 @@
                             }       
                             </script>
        
-                         <%--    </c:if> --%>
+                         
                             
                         </div>
                         

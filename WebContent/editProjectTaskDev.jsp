@@ -1,4 +1,3 @@
-
     
     <!-- CREATE / UPDATE PROJECT TASK FORM STARTS HERE -->
 
@@ -7,38 +6,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 m-auto">
-                    <a href="#" class="btn btn-light">
+                    <a href="./ListProjectController" class="btn btn-light">
                         Back to Project Board
                     </a>
-                    <h4 class="display-4 text-center">Update: ${projectTask.name }</h4>
-                    <p class="lead text-center">Project: ${project.project_name } - Project ID: ${project.project_Identifier }</p>
-                    <form onSubmit={this.onSubmit}>
+                    <h4 class="display-4 text-center">Update: </h4>
+                    <p class="lead text-center">For Project ID: ${projectId }</p>
+                    <form method="get" action="./UpdateProjectTaskController">
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg" name="summary" placeholder="Project Task summary" />
+                            <input type="text" class="form-control form-control-lg" name="summary" value="${projectTask.summary}"placeholder="Project Task summary" required/>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control form-control-lg" readonly="readonly" placeholder="Acceptance Criteria" name="acceptanceCriteria"></textarea>
+                            <input type="hidden" class="form-control form-control-lg" name="id" value="${projectTask.id}" readonly="readonly"/>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control form-control-lg" placeholder="Acceptance Criteria" name="acceptanceCriteria" readonly="readonly">${projectTask.acceptanceCriteria}</textarea>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg" readonly="readonly" name="developer" placeholder="Developer ID" />
+                            <input type="text" class="form-control form-control-lg" name="developerId" placeholder="Developer ID" value="${projectTask.developerId}" readonly="readonly"/>
                         </div>
                         
                         <h6>Due Date</h6>
                         <div class="form-group">
-                            <input type="date" class="form-control form-control-lg" readonly="readonly" name="dueDate" />
+                            <input type="text" class="form-control form-control-lg" name="dueDate" placeholder="Date" value="${projectTask.dueDate}" readonly="readonly"/>
                         </div>
                         <div class="form-group">
                             <select class="form-control form-control-lg" name="priority" disabled>
                                 <option value={0}>Select Priority</option>
-                                <option value={1}>High</option>
-                                <option value={2}>Medium</option>
-                                <option value={3}>Low</option>
+                                <option selected="selected" value="${projectTask.priority}">${projectTask.priority}</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <select class="form-control form-control-lg" name="status">
+                            <select class="form-control form-control-lg" name="status" required>
+                            <option selected="selected" value="${projectTask.status}">${projectTask.status}</option>
                                 <option value="">Select Status</option>
                                 <option value="TO_DO">TO DO</option>
                                 <option value="IN_PROGRESS">IN PROGRESS</option>
@@ -54,5 +58,3 @@
     </div>
 
     <!-- CREATE / UPDATE PROJECT TASK FORM ENDS HERE -->
-
-

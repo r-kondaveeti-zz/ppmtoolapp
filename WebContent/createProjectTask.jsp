@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 
@@ -36,17 +39,33 @@
                         Back to Project List
                     </a>
                     <h4 class="display-4 text-center">Add Project Task</h4>
-                    <p class="lead text-center">Project Name + Project Code</p>
+                    <!-- <p class="lead text-center">Project Name + Project Code</p> -->
+                    <br>
                     <form method="post" action="./CreateProjectTaskController?projectId=${projectId}">
+                    
                         <div class="form-group">
                             <input type="text" class="form-control form-control-lg" name="summary" placeholder="Project Task summary" required/>
                         </div>
+                        
                         <div class="form-group">
                             <textarea class="form-control form-control-lg" placeholder="Acceptance Criteria" name="acceptanceCriteria" required></textarea>
                         </div>
+                        
+<%--                          <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" name="developerId" placeholder="Developer ID" value="${projectTask.developerId}" required/>
+                        </div> --%>
+                        
+                        
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-lg" name="developerId" placeholder="Developer Id" required/>
+                            <select class="form-control form-control-lg" name="developerId" required>
+                                <option value={0}>Select Developers</option>
+                                <c:forEach items="${sessionScope.developers}" var="developer">
+                                <option value="${developer.id}">${developer.developerName}</option>
+                                </c:forEach>
+                            </select>
                         </div>
+                        
+                        
                         <h6>Due Date</h6>
                         <div class="form-group">
                             <input type="date" class="form-control form-control-lg" name="dueDate" required/>

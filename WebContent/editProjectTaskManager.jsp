@@ -10,7 +10,7 @@
                         Back to Project Board
                     </a>
                     <h4 class="display-4 text-center">Update: </h4>
-                    <p class="lead text-center">Project:  - Project ID: </p>
+                    <p class="lead text-center">For Project ID:  ${projectId } </p>
                     <form method="get" action="./UpdateProjectTaskController">
                         <div class="form-group">
                             <input type="text" class="form-control form-control-lg" name="summary" value="${projectTask.summary}"placeholder="Project Task summary" required/>
@@ -33,7 +33,8 @@
                         <div class="form-group">
                             <select class="form-control form-control-lg" name="priority" required>
                                 <option value={0}>Select Priority</option>
-                                <option selected="selected" value="${projectTask.priority}">${projectTask.priority}</option>
+                                <option value="${projectTask.priority}">${projectTask.priority}</option>
+                                <option value="${projectTask.priority}">${projectTask.priority}</option>
                                 <option value="High">High</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Low">Low</option>

@@ -27,13 +27,17 @@ public class ListProjectTaskController extends HttpServlet {
 
 	private ProjectTaskService projectTaskService = new ProjectTaskServiceImpl();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		User user = (User) request.getSession().getAttribute("user");
 		
-		List<ProjectTask> tasks = projectTaskService.getAllProjectTasks(Integer.parseInt(request.getParameter("id")), user.getId());
-		System.out.println(user.getId());
+		//Currently only letting managers see the tasks associated with their user id too
+		int userid = -1;
+		if (user.getId()>0) {
+			userid = user.getId();
+		}		
+		List<ProjectTask> tasks = projectTaskService.getAllProjectTasks(Integer.parseInt(request.getParameter("id")),userid);
 	
 		/**
 		 * This custom comparator allows the task lists to be sorted by

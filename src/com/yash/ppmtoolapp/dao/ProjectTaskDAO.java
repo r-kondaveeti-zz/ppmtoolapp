@@ -2,6 +2,7 @@ package com.yash.ppmtoolapp.dao;
 
 import java.util.List;
 
+import com.yash.ppmtoolapp.domain.Developer;
 import com.yash.ppmtoolapp.domain.ProjectTask;
 
 public interface ProjectTaskDAO {
@@ -22,5 +23,9 @@ public interface ProjectTaskDAO {
 	
 	
 	List<ProjectTask> findAllProjectTask(int id, int developerId);
+	
+	List<ProjectTask> findAllProjectTask(int developerId);
+	
+	
 	
 }

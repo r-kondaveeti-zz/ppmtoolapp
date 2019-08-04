@@ -27,12 +27,12 @@
     
     <!-- CREATE / UPDATE PROJECT TASK FORM STARTS HERE -->
 
-<%-- 	<c:if test="${user.role != 3 }"> --%>
+	<c:if test="${sessionScope.user.userType != 3 }">
 		<jsp:include page="editProjectTaskManager.jsp"/>
-<%-- 	</c:if> --%>
-<%-- 	<c:if test="${user.role == 3 }">
+	</c:if>
+	<c:if test="${sessionScope.user.userType == 3 }">
 		<jsp:include page="editProjectTaskDev.jsp"/>
-	</c:if> --%>
+	</c:if> 
 
     <!-- CREATE / UPDATE PROJECT TASK FORM ENDS HERE -->
 

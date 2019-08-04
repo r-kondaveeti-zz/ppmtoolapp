@@ -25,14 +25,14 @@
 								class="fa fa-flag-checkered pr-1">Project Board </i></li>
 						</a>
 
-						<%-- <c:if test="${user.role != 3}">  --%>
+						<c:if test="${sessionScope.user.userType != 3}">  
 						<a href="./EditProjectController?id=${project.id}">
 							<li class="list-group-item update"><i
 								class="fa fa-edit pr-1">Update Project Info</i></li>
 						</a>
-						<%--  </c:if>  --%>
+						</c:if>  
 
-						<%-- <c:if test="${user.role == 1}"> --%>
+						<c:if test="${sessionScope.user.userType == 1}"> 
 						<a href=#>
 							<li class="list-group-item delete"><i
 								class="fa fa-minus-circle pr-1" onclick="myFunction()">Delete
@@ -49,8 +49,7 @@
 
 
 						</a>
-						<%--  </c:if> --%>
-
+						 </c:if> 
 					</ul>
 				</div>
 			</div>

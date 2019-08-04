@@ -2,6 +2,7 @@ package com.yash.ppmtoolapp.controller;
 
 
 import java.io.IOException;
+
 import java.sql.Date;
 
 import javax.servlet.ServletException;
@@ -11,8 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yash.ppmtoolapp.domain.ProjectTask;
-import com.yash.ppmtoolapp.domain.User;
+import com.yash.ppmtoolapp.service.DeveloperService;
 import com.yash.ppmtoolapp.serviceimpl.ProjectTaskServiceImpl;
+import com.yash.ppmtoolapp.serviceimpl.DeveloperServiceImpl;
 
 @WebServlet("/CreateProjectTaskController")
 public class CreateProjectTaskController extends HttpServlet{
@@ -20,11 +22,13 @@ public class CreateProjectTaskController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private ProjectTaskServiceImpl projectTaskServiceImpl = null;
 	private ProjectTask projectTask = null;
+	private DeveloperService developerService = null;
 	
 	public CreateProjectTaskController() {
 		super();
 		projectTaskServiceImpl = new ProjectTaskServiceImpl();
 		projectTask = new ProjectTask();
+		developerService = new DeveloperServiceImpl();
 	}
 	
 	
@@ -38,8 +42,6 @@ public class CreateProjectTaskController extends HttpServlet{
 		projectTask.setPriority(request.getParameter("priority"));
 		projectTask.setStatus(request.getParameter("status"));
 		projectTask.setSummary(request.getParameter("summary"));
-		User user = (User)request.getSession().getAttribute("user");
-		System.out.println(user.getId());
 		
 		projectTaskServiceImpl.createProjectTask(projectTask);
 		
