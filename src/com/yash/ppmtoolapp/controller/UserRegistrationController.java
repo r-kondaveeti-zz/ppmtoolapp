@@ -23,9 +23,6 @@ public class UserRegistrationController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UserRegistrationController() {
         this.service = new UserServiceImpl();
     }
@@ -46,7 +43,6 @@ public class UserRegistrationController extends HttpServlet {
 				System.out.println("The user email is in doPost and the value is "+user.getEmail());
 				
 				if(!service.checkEmail(request.getParameter("email"))) {
-//					System.out.println("Inside the second if of doPost "+service.checkEmail(request.getParameter("email")));
 					service.createUser(user);
 					response.sendRedirect("./login.jsp?msg=User created successfully");
 				}

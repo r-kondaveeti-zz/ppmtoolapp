@@ -45,23 +45,17 @@ public class UserLoginController extends HttpServlet {
 					session.setAttribute("userEmail", loggedInUser.getEmail());
 					session.setAttribute("userName", loggedInUser.getName());
 					session.setAttribute("user", loggedInUser);
-//					response.sendRedirect("dashboard.jsp?msg=success");
-			
-//					List<ProjectTask> projectTasks = new ProjectTaskDAOImpl().findAllProjectTask(loggedInUser.getId());
-//					int projectId = projectTasks.get(0).getProjectId();
-
 					if(Integer.parseInt(loggedInUser.getUserType())== 1) { 
 					getServletContext().getRequestDispatcher("/ListProjectController").forward(request, response);
-					System.out.println("In IF Statement");
 					
 					} else {
-						List<ProjectTask> projectTasks = new ProjectTaskDAOImpl().findAllProjectTask(loggedInUser.getId());
-						int projectId = projectTasks.get(0).getProjectId();
-//						System.out.println("In ELse statement before ");
-//						response.sendRedirect("/ListProjectTaskController?id="+projectId);
-						getServletContext().getRequestDispatcher("/ListProjectTaskController?id="+projectId).forward(request, response);
-						System.out.println("project id "+projectId);
-//						System.out.println("In ELse statement after ");
+						List<ProjectTask> projectTasks = new ProjectTaskDAOImpl().findAllProjectTask(loggedInUser.getId());						
+						if(projectTasks.size() == 0) {
+							response.sendRedirect("login.jsp?msg="+message);
+						} else {
+							int projectId = projectTasks.get(0).getProjectId();
+							getServletContext().getRequestDispatcher("/ListProjectTaskController?id="+projectId).forward(request, response);
+						}
 					}
 				} else {
 					throw new IncorrectPasswordException("Please check your password");

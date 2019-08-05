@@ -35,7 +35,6 @@ public class TaskComparator implements Comparator<ProjectTask>{
 	public int compare(ProjectTask task1, ProjectTask task2) {
 
 		Integer t1Priority = assignPriority(task1.getPriority());
-		System.out.println("this is comparator");
 		Integer t2Priority = assignPriority(task2.getPriority());
 
 		

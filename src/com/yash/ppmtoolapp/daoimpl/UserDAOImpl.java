@@ -21,7 +21,7 @@ public class UserDAOImpl extends JDBCUtil implements UserDAO {
 			pstmt.setString(1, user.getName());
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3, user.getPassword());
-			pstmt.setInt(4, 1);
+			pstmt.setInt(4, 3);
 			pstmt.execute();
 		}catch(Exception e) {
 			e.printStackTrace();

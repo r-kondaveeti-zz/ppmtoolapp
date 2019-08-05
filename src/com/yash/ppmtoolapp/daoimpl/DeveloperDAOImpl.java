@@ -15,7 +15,7 @@ public class DeveloperDAOImpl extends JDBCUtil implements DeveloperDAO {
 	
 	public List<Developer> findAllDevelopers(){
 		List<Developer> developers = new ArrayList<>();
-		String sql = "SELECT * from developers";
+		String sql = "SELECT * from users WHERE role=3";
 
 		PreparedStatement pstmt = createPreparedStatement(sql);		
 		try {
@@ -24,8 +24,7 @@ public class DeveloperDAOImpl extends JDBCUtil implements DeveloperDAO {
 			while (rs.next()) {
 				developer = new Developer();
 				developer.setId(rs.getInt("id"));;
-				developer.setProjectTaskId(rs.getInt("project_task_id"));
-				developer.setDeveloperName(rs.getString("developer_name"));
+				developer.setDeveloperName(rs.getString("name"));
 				
 				developers.add(developer);
 			}
