@@ -24,17 +24,9 @@
 <body>
 
 
-    <jsp:include page="navbar.jsp"/>
+    <jsp:include page="loggedInNavbar.jsp"/>
 
-<!-- Notification Start from Bootstrap -->
-	<div class="alert alert-warning alert-dismissible fade show"
-		role="alert">
-		<strong>Message!</strong> ${param.msg}
-		<button type="button" class="close" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
+
 	
 
 <!-- Notification end -->

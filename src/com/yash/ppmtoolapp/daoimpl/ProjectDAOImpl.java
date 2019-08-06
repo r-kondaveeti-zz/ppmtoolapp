@@ -56,6 +56,8 @@ public class ProjectDAOImpl extends JDBCUtil implements ProjectDAO {
 		}
 		releaseResources();
 	}
+	
+	
 
 	
 	
@@ -129,6 +131,37 @@ public class ProjectDAOImpl extends JDBCUtil implements ProjectDAO {
 	public List<Project> findAll() {
 		List<Project> projects = new ArrayList<>();
 		String sql = "SELECT * from project";
+
+		PreparedStatement pstmt = createPreparedStatement(sql);
+		
+		try {
+			ResultSet rs = pstmt.executeQuery();
+			Project project = null;
+			while (rs.next()) {
+				project = new Project();
+				project.setId(rs.getInt("id"));;
+				project.setName(rs.getString("name"));
+				project.setDescription(rs.getString("description"));
+				project.setStartDate(rs.getDate("start_date"));
+				project.setEndDate(rs.getDate("end_date"));
+				project.setUniqueProjectId(rs.getString("unique_id"));
+				project.setManagerId(rs.getInt("manager_id"));
+				
+				projects.add(project);
+			}
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		}
+
+		releaseResources();
+		return projects;
+	}
+	
+	
+	@Override
+	public List<Project> findAllProjectsByManagerId(int managerId) {
+		List<Project> projects = new ArrayList<>();
+		String sql = "SELECT * from project WHERE manager_id="+managerId;
 
 		PreparedStatement pstmt = createPreparedStatement(sql);
 		

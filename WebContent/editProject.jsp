@@ -24,7 +24,7 @@
 <body>
 
 
-    <jsp:include page="navbar.jsp"/>
+   <jsp:include page="loggedInNavbar.jsp"/>
     <!-- Start of Project FORM -->
 
     <div class="project">

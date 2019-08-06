@@ -25,7 +25,7 @@
 <body>
 
 
-   <jsp:include page="navbar.jsp"/>
+   <jsp:include page="loggedInNavbar.jsp"/>
    
    <c:set var="to_do_tasks" value="${requestScope.to_do_tasks }"/>
    <c:set var="in_progress_tasks" value="${requestScope.in_progress_tasks }"/>
@@ -59,7 +59,7 @@
 				
 				
 						<c:if test="${task.priority eq 'Low'}">
-							<div class="card-header bg-secondary text-black">
+							<div class="card-header bg-light text-black">
                             Task ID: ${task.id}  -- Task Priority: ${task.priority }
                         </div>
 						</c:if>

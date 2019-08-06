@@ -26,7 +26,7 @@
 
 <body>
 
-	<jsp:include page="navbar.jsp"/>
+	<jsp:include page="loggedInNavbar.jsp"/>
     
     <!-- CREATE / UPDATE PROJECT TASK FORM STARTS HERE -->
 

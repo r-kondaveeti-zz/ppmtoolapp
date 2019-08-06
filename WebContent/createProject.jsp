@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 
@@ -24,7 +27,7 @@
 <body>
 
 
-    <jsp:include page="navbar.jsp"/>
+    <jsp:include page="loggedInNavbar.jsp"/>
     <!-- Start of Project FORM -->
 
     <div class="project">
@@ -41,8 +44,16 @@
                             <input type="text" name="uniqueProjectId" class="form-control form-control-lg" placeholder="Unique Project ID" required/>
                         </div>
                         
-                   		<div class="form-group">
+                   		<!-- <div class="form-group">
                             <input type="text" name="managerId" class="form-control form-control-lg " placeholder="Manager ID" required/>
+                        </div> -->
+                        <div class="form-group">
+                            <select class="form-control form-control-lg" name="managerId" required>
+                                <option value={0}>Select Managers</option>
+                                <c:forEach items="${sessionScope.managers}" var="manager">
+                                <option value="${manager.id}">${manager.managerName}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         
                         <!-- disabled for Edit Only!! remove "disabled" for the Create operation -->

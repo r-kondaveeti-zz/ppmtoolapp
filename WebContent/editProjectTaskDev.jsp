@@ -31,12 +31,12 @@
                             <input type="text" class="form-control form-control-lg" name="dueDate" placeholder="Date" value="${projectTask.dueDate}" readonly="readonly"/>
                         </div>
                         <div class="form-group">
-                            <select class="form-control form-control-lg" name="priority" disabled>
-                                <option value={0}>Select Priority</option>
+                            <select class="form-control form-control-lg" name="priority" >
+                        <!--        <option value={0}>Select Priority</option> -->
                                 <option selected="selected" value="${projectTask.priority}">${projectTask.priority}</option>
-                                <option value="High">High</option>
+                        <!--         <option value="High">High</option>
                                 <option value="Medium">Medium</option>
-                                <option value="Low">Low</option>
+                                <option value="Low">Low</option> --> 
                             </select>
                         </div>
 

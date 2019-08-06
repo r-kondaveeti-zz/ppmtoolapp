@@ -55,6 +55,8 @@ public interface ProjectDAO {
 	 * @return list of contacts if found. Otherwise null.
 	 */
 	List<Project> findAll();
+	
+	public List<Project> findAllProjectsByManagerId(int managerId);
 
 
 }

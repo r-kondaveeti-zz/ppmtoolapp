@@ -1,8 +1,8 @@
+
 package com.yash.ppmtoolapp.dao;
 
 import java.util.List;
 
-import com.yash.ppmtoolapp.domain.Developer;
 import com.yash.ppmtoolapp.domain.ProjectTask;
 
 public interface ProjectTaskDAO {
